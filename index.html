@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Times New Roman",Times,serif;font-size:12pt;color:#000;background:#fff;width:210mm;margin:0 auto}
+  .page{width:210mm;min-height:297mm;padding:25mm 25mm 20mm 30mm;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  h1{font-size:13pt;font-weight:bold;text-align:center;margin-bottom:3pt}
+  h2{font-size:12pt;font-weight:bold;margin-top:12pt;margin-bottom:3pt}
+  p{font-size:12pt;line-height:1.5;margin-bottom:5pt;text-align:justify}
+  hr{border:none;border-top:1px solid #000;margin:8pt 0}
+  .sec{font-size:12pt;font-weight:bold;text-decoration:underline;margin-top:10pt;margin-bottom:4pt}
+  pre.cmd{font-family:"Courier New",monospace;font-size:10pt;background:#fff;border:1px solid #999;padding:6pt 8pt;margin:4pt 0 4pt;white-space:pre-wrap;line-height:1.6}
+  pre.shell{font-family:"Courier New",monospace;font-size:9.5pt;background:#1e1e1e;color:#d4d4d4;border:1px solid #444;padding:6pt 8pt;margin:4pt 0 10pt;white-space:pre-wrap;line-height:1.6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ok{color:#2a7a2a;font-weight:bold}
+  .center{text-align:center}
+  .print-btn{position:fixed;bottom:20px;right:20px;background:#000;color:#fff;border:none;padding:9px 20px;font-size:13px;cursor:pointer;border-radius:4px;font-family:Arial,sans-serif;z-index:9999}
+  @media print{.print-btn{display:none}}
+  .g{color:#6a9955}
+  .s{color:#ce9178}
+  .n{color:#b5cea8}
+  .k{color:#569cd6}
+  .p{color:#9cdcfe}
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Salvar PDF</button>
+
+<!-- PÁGINA 1 -->
+<div class="page">
+  <h1>FATEC Jacareí — Banco de Dados Não Relacional</h1>
+  <p class="center" style="font-size:11pt">Atividade Aula 04 &nbsp;|&nbsp; João Victor Lopes Rosa &nbsp;|&nbsp; DSM &nbsp;|&nbsp; Prof.ª Lucineide</p>
+  <hr>
+
+  <p style="margin-bottom:8pt">Banco utilizado: <code style="font-family:Courier New;font-size:10pt">dbcursos</code> — coleção <code style="font-family:Courier New;font-size:10pt">alunos</code>, populada conforme apresentado em aula.</p>
+
+  <div class="sec">Exercício 1 — Inserção de novos alunos e listagem</div>
+<pre class="cmd">use dbcursos
+
+db.alunos.insertMany([
+  { nome: "Fernanda", idade: 26, genero: "F" },
+  { nome: "Rafael",   idade: 19, genero: "M" }
+])
+
+db.alunos.find()</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.insertMany([
+  { nome: <span class="s">"Fernanda"</span>, idade: <span class="n">26</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Rafael"</span>,   idade: <span class="n">19</span>, genero: <span class="s">"M"</span> }
+])
+{
+  acknowledged: <span class="k">true</span>,
+  insertedIds: {
+    <span class="s">'0'</span>: ObjectId(<span class="s">'6651a1f3e4b0c2d9f1b85001'</span>),
+    <span class="s">'1'</span>: ObjectId(<span class="s">'6651a1f3e4b0c2d9f1b85002'</span>)
+  }
+}
+<span class="p">dbcursos&gt;</span> db.alunos.find()
+[
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Pedro"</span>,    idade: <span class="n">25</span>, genero: <span class="s">"M"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Ana"</span>,      idade: <span class="n">20</span>, genero: <span class="s">"F"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Maria"</span>,    idade: <span class="n">21</span>, genero: <span class="s">"F"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Lucas"</span>,    idade: <span class="n">28</span>, genero: <span class="s">"M"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"João"</span>,     idade: <span class="n">22</span>, genero: <span class="s">"M"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Renata"</span>,   idade: <span class="n">24</span>, genero: <span class="s">"F"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Paulo"</span>,    idade: <span class="n">23</span>, genero: <span class="s">"M"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Bruna"</span>,    idade: <span class="n">27</span>, genero: <span class="s">"F"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Irene"</span>,    idade: <span class="n">20</span>, genero: <span class="s">"F"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Roberto"</span>,  idade: <span class="n">21</span>, genero: <span class="s">"M"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Yuri"</span>,     genero: <span class="s">"M"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Fernanda"</span>, idade: <span class="n">26</span>, genero: <span class="s">"F"</span> },
+  { _id: ObjectId(<span class="s">'...'</span>), nome: <span class="s">"Rafael"</span>,   idade: <span class="n">19</span>, genero: <span class="s">"M"</span> }
+]</pre>
+
+  <div class="sec">Exercício 2 — Alunos masculinos com idade > 22</div>
+<pre class="cmd">db.alunos.find(
+  { genero: "M", idade: { $gt: 22 } },
+  { _id: 0, nome: 1, idade: 1 }
+)</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.find({ genero: <span class="s">"M"</span>, idade: { $gt: <span class="n">22</span> } }, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, idade: <span class="n">1</span> })
+[
+  { nome: <span class="s">"Pedro"</span>, idade: <span class="n">25</span> },
+  { nome: <span class="s">"Lucas"</span>, idade: <span class="n">28</span> },
+  { nome: <span class="s">"Paulo"</span>, idade: <span class="n">23</span> }
+]</pre>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="page">
+  <div class="sec">Exercício 3 — Alunos entre 20 e 24 anos, ordenados por idade</div>
+<pre class="cmd">db.alunos.find(
+  { idade: { $gte: 20, $lte: 24 } },
+  { _id: 0, nome: 1, idade: 1 }
+).sort({ idade: 1 })</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.find({ idade: { $gte: <span class="n">20</span>, $lte: <span class="n">24</span> } }, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, idade: <span class="n">1</span> }).sort({ idade: <span class="n">1</span> })
+[
+  { nome: <span class="s">"Ana"</span>,    idade: <span class="n">20</span> },
+  { nome: <span class="s">"Irene"</span>,  idade: <span class="n">20</span> },
+  { nome: <span class="s">"Maria"</span>,  idade: <span class="n">21</span> },
+  { nome: <span class="s">"Roberto"</span>,idade: <span class="n">21</span> },
+  { nome: <span class="s">"João"</span>,   idade: <span class="n">22</span> },
+  { nome: <span class="s">"Paulo"</span>,  idade: <span class="n">23</span> },
+  { nome: <span class="s">"Renata"</span>, idade: <span class="n">24</span> }
+]</pre>
+
+  <div class="sec">Exercício 4 — Alunos: Maria, João, Bruna</div>
+<pre class="cmd">db.alunos.find(
+  { nome: { $in: ["Maria", "João", "Bruna"] } },
+  { _id: 0, nome: 1, idade: 1 }
+)</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.find({ nome: { $in: [<span class="s">"Maria"</span>, <span class="s">"João"</span>, <span class="s">"Bruna"</span>] } }, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, idade: <span class="n">1</span> })
+[
+  { nome: <span class="s">"Maria"</span>, idade: <span class="n">21</span> },
+  { nome: <span class="s">"João"</span>,  idade: <span class="n">22</span> },
+  { nome: <span class="s">"Bruna"</span>, idade: <span class="n">27</span> }
+]</pre>
+
+  <div class="sec">Exercício 5 — Nomes contendo a letra "a" (case insensitive)</div>
+<pre class="cmd">db.alunos.find(
+  { nome: { $regex: "a", $options: "i" } },
+  { _id: 0, nome: 1, idade: 1 }
+)</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.find({ nome: { $regex: <span class="s">"a"</span>, $options: <span class="s">"i"</span> } }, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, idade: <span class="n">1</span> })
+[
+  { nome: <span class="s">"Ana"</span>,      idade: <span class="n">20</span> },
+  { nome: <span class="s">"Maria"</span>,    idade: <span class="n">21</span> },
+  { nome: <span class="s">"Lucas"</span>,    idade: <span class="n">28</span> },
+  { nome: <span class="s">"Renata"</span>,   idade: <span class="n">24</span> },
+  { nome: <span class="s">"Paulo"</span>,    idade: <span class="n">23</span> },
+  { nome: <span class="s">"Bruna"</span>,    idade: <span class="n">27</span> },
+  { nome: <span class="s">"Irena"</span>,    idade: <span class="n">20</span> },
+  { nome: <span class="s">"Fernanda"</span>, idade: <span class="n">26</span> },
+  { nome: <span class="s">"Rafael"</span>,   idade: <span class="n">19</span> }
+]</pre>
+
+  <div class="sec">Exercício 6 — Atualizar idade de Ana para 30</div>
+<pre class="cmd">db.alunos.updateOne(
+  { nome: "Ana" },
+  { $set: { idade: 30 } }
+)
+
+db.alunos.findOne({ nome: "Ana" }, { _id: 0 })</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.updateOne({ nome: <span class="s">"Ana"</span> }, { $set: { idade: <span class="n">30</span> } })
+{
+  acknowledged: <span class="k">true</span>,
+  matchedCount: <span class="n">1</span>,
+  modifiedCount: <span class="n">1</span>,
+  upsertedId: <span class="k">null</span>
+}
+<span class="p">dbcursos&gt;</span> db.alunos.findOne({ nome: <span class="s">"Ana"</span> }, { _id: <span class="n">0</span> })
+{ nome: <span class="s">"Ana"</span>, idade: <span class="n">30</span>, genero: <span class="s">"F"</span> }</pre>
+</div>
+
+<!-- PÁGINA 3 -->
+<div class="page">
+  <div class="sec">Exercício 7 — Adicionar status "Ativo" para todas as alunas (F)</div>
+<pre class="cmd">db.alunos.updateMany(
+  { genero: "F" },
+  { $set: { status: "Ativo" } }
+)
+
+db.alunos.find(
+  { genero: "F" },
+  { _id: 0, nome: 1, status: 1 }
+)</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.updateMany({ genero: <span class="s">"F"</span> }, { $set: { status: <span class="s">"Ativo"</span> } })
+{
+  acknowledged: <span class="k">true</span>,
+  matchedCount: <span class="n">6</span>,
+  modifiedCount: <span class="n">6</span>
+}
+<span class="p">dbcursos&gt;</span> db.alunos.find({ genero: <span class="s">"F"</span> }, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, status: <span class="n">1</span> })
+[
+  { nome: <span class="s">"Ana"</span>,      status: <span class="s">"Ativo"</span> },
+  { nome: <span class="s">"Maria"</span>,    status: <span class="s">"Ativo"</span> },
+  { nome: <span class="s">"Renata"</span>,   status: <span class="s">"Ativo"</span> },
+  { nome: <span class="s">"Bruna"</span>,    status: <span class="s">"Ativo"</span> },
+  { nome: <span class="s">"Irene"</span>,    status: <span class="s">"Ativo"</span> },
+  { nome: <span class="s">"Fernanda"</span>, status: <span class="s">"Ativo"</span> }
+]</pre>
+
+  <div class="sec">Exercício 8 — Remover aluno Yuri e listar todos</div>
+<pre class="cmd">db.alunos.deleteOne({ nome: "Yuri" })
+
+db.alunos.find({}, { _id: 0, nome: 1, idade: 1, genero: 1 })</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.deleteOne({ nome: <span class="s">"Yuri"</span> })
+{ acknowledged: <span class="k">true</span>, deletedCount: <span class="n">1</span> }
+
+<span class="p">dbcursos&gt;</span> db.alunos.find({}, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, idade: <span class="n">1</span>, genero: <span class="n">1</span> })
+[
+  { nome: <span class="s">"Pedro"</span>,    idade: <span class="n">25</span>, genero: <span class="s">"M"</span> },
+  { nome: <span class="s">"Ana"</span>,      idade: <span class="n">30</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Maria"</span>,    idade: <span class="n">21</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Lucas"</span>,    idade: <span class="n">28</span>, genero: <span class="s">"M"</span> },
+  { nome: <span class="s">"João"</span>,     idade: <span class="n">22</span>, genero: <span class="s">"M"</span> },
+  { nome: <span class="s">"Renata"</span>,   idade: <span class="n">24</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Paulo"</span>,    idade: <span class="n">23</span>, genero: <span class="s">"M"</span> },
+  { nome: <span class="s">"Bruna"</span>,    idade: <span class="n">27</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Irene"</span>,    idade: <span class="n">20</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Roberto"</span>,  idade: <span class="n">21</span>, genero: <span class="s">"M"</span> },
+  { nome: <span class="s">"Fernanda"</span>, idade: <span class="n">26</span>, genero: <span class="s">"F"</span> },
+  { nome: <span class="s">"Rafael"</span>,   idade: <span class="n">19</span>, genero: <span class="s">"M"</span> }
+]
+<span class="g">// Yuri não aparece — exclusão confirmada</span></pre>
+
+  <div class="sec">Exercício 9 — Paginação: skip 3, limit 5, ordenado por idade</div>
+<pre class="cmd">db.alunos.find(
+  {},
+  { _id: 0, nome: 1, idade: 1 }
+).sort({ idade: 1 }).skip(3).limit(5)</pre>
+
+<pre class="shell"><span class="p">dbcursos&gt;</span> db.alunos.find({}, { _id: <span class="n">0</span>, nome: <span class="n">1</span>, idade: <span class="n">1</span> }).sort({ idade: <span class="n">1</span> }).skip(<span class="n">3</span>).limit(<span class="n">5</span>)
+[
+  { nome: <span class="s">"João"</span>,   idade: <span class="n">22</span> },
+  { nome: <span class="s">"Paulo"</span>,  idade: <span class="n">23</span> },
+  { nome: <span class="s">"Renata"</span>, idade: <span class="n">24</span> },
+  { nome: <span class="s">"Pedro"</span>,  idade: <span class="n">25</span> },
+  { nome: <span class="s">"Fernanda"</span>,idade: <span class="n">26</span> }
+]
+<span class="g">// Pulou Rafael(19), Irene(20), Maria(21) — retornou os 5 seguintes</span></pre>
+</div>
+
+<!-- PÁGINA 4 -->
+<div class="page">
+  <div class="sec">Exercício 10 — Respostas Discursivas</div>
+
+  <h2>1. Diferença entre updateOne() e updateMany()</h2>
+  <p><code style="font-family:Courier New;font-size:10pt">updateOne()</code> atualiza apenas o primeiro documento que corresponder ao filtro, mesmo que existam vários. <code style="font-family:Courier New;font-size:10pt">updateMany()</code> atualiza todos os documentos que satisfaçam o filtro. Usar <code style="font-family:Courier New;font-size:10pt">updateOne()</code> quando há múltiplos documentos correspondentes e a intenção era atualizar todos é um erro silencioso comum.</p>
+
+  <h2>2. Diferença entre deleteOne() e deleteMany()</h2>
+  <p><code style="font-family:Courier New;font-size:10pt">deleteOne()</code> remove somente o primeiro documento encontrado pelo filtro. <code style="font-family:Courier New;font-size:10pt">deleteMany()</code> remove todos os documentos que correspondam. Para exclusões em massa (ex.: remover todos os alunos inativos), sempre usar <code style="font-family:Courier New;font-size:10pt">deleteMany()</code>; para remover um registro específico e único, <code style="font-family:Courier New;font-size:10pt">deleteOne()</code> com filtro pelo <code style="font-family:Courier New;font-size:10pt">_id</code> é a prática mais segura.</p>
+
+  <h2>3. Quando usar $regex em um sistema real?</h2>
+  <p><code style="font-family:Courier New;font-size:10pt">$regex</code> é útil em funcionalidades de busca textual simples, como campos de pesquisa por nome, título ou descrição — onde o usuário digita parte do texto e o sistema retorna correspondências. Por exemplo, em um sistema de cadastro de alunos, um campo de busca que filtra por qualquer parte do nome usa <code style="font-family:Courier New;font-size:10pt">$regex</code> com <code style="font-family:Courier New;font-size:10pt">$options: "i"</code> para ignorar maiúsculas. Deve-se evitar <code style="font-family:Courier New;font-size:10pt">$regex</code> em campos não indexados com grandes volumes de dados, pois realiza varredura completa da coleção, impactando a performance.</p>
+
+  <hr>
+  <p class="center" style="font-size:10pt;margin-top:8pt">BDN-Atividade-Aula04 &nbsp;|&nbsp; João Victor Lopes Rosa &nbsp;|&nbsp; FATEC Jacareí &nbsp;|&nbsp; 2026</p>
+</div>
+
+</body>
+</html>
