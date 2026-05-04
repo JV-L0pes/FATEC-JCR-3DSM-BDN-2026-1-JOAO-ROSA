@@ -1,0 +1,8 @@
+[
+  { "_id": { "$oid": "67df12a9b1c2d3e4f5a67890" }, "estacaoId": 1, "temperatura": 19, "umidade": 50 },
+  { "_id": { "$oid": "67df12a9b1c2d3e4f5a67891" }, "estacaoId": 1, "temperatura": 20, "umidade": 52 },
+  { "_id": { "$oid": "67df12a9b1c2d3e4f5a67892" }, "estacaoId": 1, "temperatura": 21, "umidade": 51 },
+  { "_id": { "$oid": "67df12a9b1c2d3e4f5a67893" }, "estacaoId": 2, "temperatura": 30, "umidade": 40 },
+  { "_id": { "$oid": "67df12a9b1c2d3e4f5a67894" }, "estacaoId": 2, "temperatura": 31, "umidade": 38 },
+  { "_id": { "$oid": "67df12a9b1c2d3e4f5a67895" }, "estacaoId": 2, "temperatura": 32, "umidade": 35 }
+]
